@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FinVest CRM — Project Head Demo Guide</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0F4C81;
+      --primary-dark: #0B3A63;
+      --success: #16A34A;
+      --slate-50: #F8FAFC;
+      --slate-100: #F1F5F9;
+      --slate-300: #CBD5E1;
+      --slate-500: #64748B;
+      --slate-800: #1E293B;
+      --slate-900: #0F172A;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--slate-800);
+      background-color: var(--slate-50);
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 50px 60px;
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.03);
+      border: 1px solid var(--slate-100);
+    }
+
+    /* Print styling */
+    @media print {
+      body {
+        background-color: white;
+        padding: 0;
+      }
+      .container {
+        box-shadow: none;
+        border: none;
+        padding: 0;
+        max-width: 100%;
+      }
+      .page-break {
+        page-break-before: always;
+        break-before: page;
+      }
+      .no-print {
+        display: none;
+      }
+    }
+
+    header {
+      border-bottom: 2px solid var(--slate-100);
+      padding-bottom: 30px;
+      margin-bottom: 40px;
+    }
+
+    .badge {
+      display: inline-block;
+      background-color: #0F4C8115;
+      color: var(--primary);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--slate-900);
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+    }
+
+    .meta-subtitle {
+      font-size: 14px;
+      color: var(--slate-500);
+      margin-top: 8px;
+      font-weight: 500;
+    }
+
+    h2 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-top: 35px;
+      margin-bottom: 15px;
+      border-left: 4px solid var(--primary);
+      padding-left: 12px;
+    }
+
+    p {
+      font-size: 14px;
+      color: var(--slate-800);
+      margin-bottom: 15px;
+    }
+
+    /* Steps */
+    .step-box {
+      background: var(--slate-50);
+      border: 1px solid var(--slate-100);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 25px;
+      page-break-inside: avoid;
+    }
+
+    .step-header {
+      display: flex;
+      align-items: center;
+      justify-content: justify;
+      margin-bottom: 12px;
+    }
+
+    .step-num {
+      background: var(--primary);
+      color: white;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      margin-right: 10px;
+    }
+
+    .step-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--slate-900);
+    }
+
+    .grid-desc {
+      display: grid;
+      grid-template-cols: 1fr 1.2fr;
+      gap: 20px;
+      margin-top: 15px;
+    }
+
+    @media (max-width: 600px) {
+      .grid-desc {
+        grid-template-cols: 1fr;
+      }
+    }
+
+    .action-pane {
+      background: white;
+      border: 1px solid var(--slate-300);
+      border-radius: 8px;
+      padding: 12px 15px;
+    }
+
+    .action-pane h4 {
+      font-size: 11px;
+      text-transform: uppercase;
+      color: var(--slate-500);
+      letter-spacing: 0.5px;
+      margin-bottom: 5px;
+      font-weight: 700;
+    }
+
+    .action-pane p {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--slate-800);
+      margin-bottom: 0;
+    }
+
+    .speech-pane {
+      background: #F0FDF4;
+      border: 1px solid #DCFCE7;
+      border-radius: 8px;
+      padding: 12px 15px;
+    }
+
+    .speech-pane h4 {
+      font-size: 11px;
+      text-transform: uppercase;
+      color: var(--success);
+      letter-spacing: 0.5px;
+      margin-bottom: 5px;
+      font-weight: 700;
+    }
+
+    .speech-pane p {
+      font-size: 12.5px;
+      color: #14532D;
+      font-style: italic;
+      margin-bottom: 0;
+    }
+
+    .tip-box {
+      background-color: #EFF6FF;
+      border: 1px solid #DBEAFE;
+      border-radius: 12px;
+      padding: 15px 20px;
+      margin-top: 25px;
+      font-size: 13px;
+      color: #1E40AF;
+    }
+
+    .tip-box strong {
+      color: #1E3A8A;
+    }
+
+    .print-btn-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 25px;
+    }
+
+    .btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(15, 76, 129, 0.25);
+      transition: all 0.2s ease;
+    }
+
+    .btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="print-btn-container no-print">
+    <button class="btn" onclick="window.print()">🖨️ Save or Print to PDF</button>
+  </div>
+
+  <div class="container">
+    <header>
+      <div class="badge">Sales Tool & Presentation Script</div>
+      <h1>FinVest CRM — Project Head Demo Playbook</h1>
+      <div class="meta-subtitle">A sorted guide to presenting the CRM system to win new business commissions.</div>
+    </header>
+
+    <p>Use this guide during your client presentation. It is structured to focus on <strong>business value</strong> (what the CRM solves for them) and <strong>interactive wow-factors</strong> (to prove it is a living prototype, not a mock design).</p>
+
+    <h2>Phase 1: The Pitch Hook</h2>
+    <div class="step-box">
+      <div class="step-header">
+        <div class="step-num">1</div>
+        <div class="step-title">Setting the Context</div>
+      </div>
+      <div class="grid-desc">
+        <div class="action-pane">
+          <h4>Action</h4>
+          <p>Open the browser to <strong>Dashboard page</strong> but do not interact yet. Look at the client directly.</p>
+        </div>
+        <div class="speech-pane">
+          <h4>What to Say</h4>
+          <p>"As a Mutual Fund Distributor, your biggest asset is client trust, but your biggest bottleneck is operational overhead: tracking SIP dues, resolving KYC issues, and building custom client portfolios. We built the FinVest CRM to automate this completely, serving as a unified command center."</p>
+        </div>
+      </div>
+    </div>
+
+    <h2>Phase 2: The Command Center</h2>
+    <div class="step-box">
+      <div class="step-header">
+        <div class="step-num">2</div>
+        <div class="step-title">Live Ticker & Dashboard Metrics</div>
+      </div>
+      <div class="grid-desc">
+        <div class="action-pane">
+          <h4>Action</h4>
+          <p>Hover over the <strong>Market Ticker</strong> at the top, then point out the 12 KPI cards and charts.</p>
+        </div>
+        <div class="speech-pane">
+          <h4>What to Say</h4>
+          <p>"The second your advisors log in, they have live market feeds at the top. Below that, they see 12 dynamic KPIs like Total AUM, monthly commission book, and due today's SIP. It gives immediate transparency on business health."</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2>Phase 3: The Climax (Interactive Wow Moment)</h2>
+    <div class="step-box">
+      <div class="step-header">
+        <div class="step-num">3</div>
+        <div class="step-title">Mutual Fund Comparison & Analysis</div>
+      </div>
+      <div class="grid-desc">
+        <div class="action-pane">
+          <h4>Action</h4>
+          <p>Navigate to <strong>Mutual Funds</strong>. Select checkboxes/compare buttons on two funds, click <strong>Compare Now</strong> on the bottom bar.</p>
+        </div>
+        <div class="speech-pane">
+          <h4>What to Say</h4>
+          <p>"During customer calls, advisors can select up to 3 mutual funds, compare them side-by-side with overlapping return graphs, exit loads, and manager info, without switching tabs or tools."</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-box">
+      <div class="step-header">
+        <div class="step-num">4</div>
+        <div class="step-title">Live Mandate Execution</div>
+      </div>
+      <div class="grid-desc">
+        <div class="action-pane">
+          <h4>Action</h4>
+          <p>Click <strong>Invest</strong> on a fund. Choose client <strong>Rahul Sharma</strong>, select <strong>Lumpsum</strong>, input <strong>50,000</strong>, click <strong>Proceed to Invest</strong>. Wait for success screen.</p>
+        </div>
+        <div class="speech-pane">
+          <h4>What to Say</h4>
+          <p>"We integrated a live transaction drawer. We choose our client, input the amount, and proceed. The CRM simulates mandate processing through BSE Star MF/BillDesk, outputting a secure confirmation."</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-box">
+      <div class="step-header">
+        <div class="step-num">5</div>
+        <div class="step-title">Dynamic Global State Verification</div>
+      </div>
+      <div class="grid-desc">
+        <div class="action-pane">
+          <h4>Action</h4>
+          <p>Click Done. Navigate immediately to the <strong>Dashboard</strong>. Point at today's investment value.</p>
+        </div>
+        <div class="speech-pane">
+          <h4>What to Say</h4>
+          <p>"Notice that today's investment metrics and transaction log updated globally. This is a fully responsive state-managed system. All changes propagate instantly."</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2>Phase 4: Relationship & Operational Auditing</h2>
+    <div class="step-box">
+      <div class="step-header">
+        <div class="step-num">6</div>
+        <div class="step-title">Client Profiles, KYC, & Timeline Logs</div>
+      </div>
+      <div class="grid-desc">
+        <div class="action-pane">
+          <h4>Action</h4>
+          <p>Go to <strong>Clients</strong>, click on <strong>Rahul Sharma</strong>. Walk through the Overview, Portfolio, Documents, and Notes tabs.</p>
+        </div>
+        <div class="speech-pane">
+          <h4>What to Say</h4>
+          <p>"Every client gets a digital folder. You see their nominee shares, document vault (PAN/Cheques), bank IFSC codes, and an audit trail timeline of their onboarding steps. Everything is ready for relationship managers."</p>
+        </div>
+      </div>
+    </div>
+
+    <h2>Phase 5: Operational Utilities</h2>
+    <div class="step-box">
+      <div class="step-header">
+        <div class="step-num">7</div>
+        <div class="step-title">Reports, Calendars & AI Assistant</div>
+      </div>
+      <div class="grid-desc">
+        <div class="action-pane">
+          <h4>Action</h4>
+          <p>Open <strong>Reports</strong> (show PDF/Excel generation), go to <strong>Calendar</strong> (show event list), click the floating **AI Assistant**.</p>
+        </div>
+        <div class="speech-pane">
+          <h4>What to Say</h4>
+          <p>"With one click, advisors export capital gain sheets or email client statements. The calendar tracks birthdays and scheduled portfolio reviews automatically. The assistant provides quick calculations on the go."</p>
+        </div>
+      </div>
+    </div>
+
+    <h2>Phase 6: The Closing Pitch</h2>
+    <div class="step-box">
+      <div class="step-header">
+        <div class="step-num">8</div>
+        <div class="step-title">Technical Advantages</div>
+      </div>
+      <div class="grid-desc">
+        <div class="action-pane">
+          <h4>Action</h4>
+          <p>Open the **Settings** page and close the browser window when finished.</p>
+        </div>
+        <div class="speech-pane">
+          <h4>What to Say</h4>
+          <p>"We built this using React, Vite, and TailwindCSS. The platform loads instantly, has zero backend dependencies for this front-end version, and is ready to hook into your broker APIs when you sign the contract."</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <strong>💡 Presentation Secrets:</strong> Always emphasize that you have built a <strong>scalable framework</strong>. Highlight that the design system is modular, meaning they can request custom brand colors (like changing Navy Blue to their company's exact logo hex code) in less than 5 minutes.
+    </div>
+
+  </div>
+
+</body>
+</html>
