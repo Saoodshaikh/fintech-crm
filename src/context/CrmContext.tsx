@@ -33,6 +33,7 @@ export interface Client {
   status: string;
   kycStatus: string;
   goal: string;
+  risk: string;
   aum: number;
   currentValue: number;
   xirr: number;
@@ -49,7 +50,7 @@ export interface Client {
   nominee: {
     name: string;
     relation: string;
-    share: number;
+    share: number | string;
   };
 }
 

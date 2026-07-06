@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { Search, Filter, Download, Plus, Eye, Pencil, Trash2, X } from "lucide-react";
+import { Search, Filter, Download, Plus, Eye, Pencil, Trash2, X, Users } from "lucide-react";
 import Layout from "../components/Layout";
 import { Card, StatusBadge, RiskBadge, Avatar, Button } from "../components/UI";
 import { useCrm } from "../context/CrmContext";

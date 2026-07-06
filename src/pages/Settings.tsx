@@ -286,7 +286,7 @@ function ThemePanel() {
             <button
               key={c}
               className="w-8 h-8 rounded-full shadow border-2 border-white ring-2 ring-offset-2"
-              style={{ backgroundColor: c, ringColor: c }}
+              style={{ backgroundColor: c }}
             />
           ))}
         </div>
